@@ -1,0 +1,131 @@
+/*!
+ * @author Chikara Funabashi
+ */
+
+
+.cf-div {
+
+
+  /*
+  padding: 60px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  color: inherit;
+  */
+
+
+
+  padding: 24px;
+
+  /*
+  margin: 24px;
+
+  border-width: 5px 5px 5px 5px;
+
+
+  border-color: #ff0000;
+  */
+
+  border: 1px solid #000000;
+
+  /*
+  background-color: #eeeeee;
+  */
+
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+
+/*
+.cf-div h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: inherit;
+}
+
+.cf-div li {
+  line-height: 30px;
+}
+*/
+
+
+
+.dokidoki {
+	-webkit-animation-name: scale;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+
+}
+
+
+@-webkit-keyframes scale{
+  0%{
+    -webkit-transform:scale(0.1);
+  }
+  50%{
+    -webkit-transform:scale(1.0);
+  }
+  100%{
+    -webkit-transform:scale(0.1);
+  }
+
+}
+
+/*
+.cf-chk {
+	height:0;
+	position:absolute;
+	top:0; left:0;
+	width:100px;
+}
+.cf-chk:after {
+	content:"not checked";
+	background:red;
+}
+.cf-chk:checked:after {
+	content:"checked!!";
+	background:yellow;
+}
+.cf-chk + .t {
+	padding-left:80px;
+}
+.l{
+	display:block;
+	width:auto;
+	height:auto;
+	position:relative;
+}
+*/
+
+
+
+input[type=checkbox].cf-chk-dokidoki {
+	width: 0px;
+	height: 0px;
+}
+
+
+
+input[type=checkbox].cf-chk-dokidoki:checked ~ * {
+  border-color: #ff8800;
+  -webkit-box-shadow: 0 1px 4px rgba(255, 205, 80, 0.25);
+     -moz-box-shadow: 0 1px 4px rgba(255, 205, 80, 0.25);
+          box-shadow: 0 1px 4px rgba(255, 205, 80, 0.25);
+        
+}
+
+input[type=checkbox].cf-chk-dokidoki:checked ~ * img{
+     
+	-webkit-animation-name: scale;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;          
+}
+

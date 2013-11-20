@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>ヘルリンサーバー0</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <!--
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    -->
+  </head>
+
+  <body>
+
+
+    <div class="container-fluid">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>ヘルリンサーバー</h1>
+        <p>テスト画面</p>
+        <!-- <p><a href="#" class="btn btn-info btn-large">稼働中 &raquo;</a></p> -->
+      </div>
+
+      <!-- Example row of columns -->
+      
+      <div class="row-fluid">
+      
+        <div class="span2">
+          <h2></h2>
+          
+        </div>
+      
+        <div class="span8">
+
+          <!-- enctype="multipart/form-data" -->
+          <form class="form-horizontal well" method="post" action="api/post_posts"  enctype="multipart/form-data" >
+            <fieldset>
+              <legend>投稿テスト</legend>
+              
+              <div class="control-group">
+                <label class="control-label" for="sid">sid</label>
+                <div class="controls">
+                  <input type="text" class="input-xlarge" id="sid" name="sid" value="veDTtmYxsTySbqHMiKhtgKOCeqZnBEep">
+                  <p class="help-block"></p>
+                </div>
+              </div>
+              
+              <div class="control-group">  
+                <label class="control-label" for="title">title</label>
+                <div class="controls">
+                  <input type="text" class="input-xlarge" id="title" name="title">
+                  <p class="help-block"></p>
+                </div>
+              </div>
+              
+              <div class="control-group">
+                <label class="control-label" for="summary">summary</label>
+                <div class="controls">
+                  <input type="text" class="input-xlarge" id="summary" name="summary">
+                  <p class="help-block"></p>
+                </div>
+              </div>
+              
+              <div class="control-group">
+                <label class="control-label" for="image">image</label>
+                <div class="controls">
+                  <input type="file" class="input-xlarge" id="image" name="image">
+                  <p class="help-block"></p>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">送信</button>
+                <button type="reset" class="btn">キャンセル</button>
+              </div>
+            </fieldset>
+          </form>
+        
+        </div>
+        
+        <div class="span2">
+          <h2></h2>
+          
+        </div>
+        
+        
+      </div>
+      
+      
+      
+
+      <hr>
+
+      <footer>
+        <p>&copy; CHiKARA 2013</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!--<script src="../assets/js/jquery.js"></script>-->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
