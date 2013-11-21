@@ -2,7 +2,7 @@
 <%-- (1)JavaBeansをインポートします。 --%>
 <%@ page import="java.beans.Beans.*" %>
 <%-- (2)<jsp:useBean>タグでJavaBeansのオブジェクトを生成します。 --%>
-<jsp:useBean id="n1" class="jp.dmtc.ing.promo.beans.Next1Bean" scope="session" />
+<jsp:useBean id="b" class="jp.dmtc.ing.promoa.beans.MBean" scope="session" />
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -129,7 +129,7 @@
 		<ul class='thumbnails'>
 
         <%
-			for (int i = 0; i < n1.names.size(); i++) {
+			for (int i = 0; i < b.names.size(); i++) {
 				out.println(
 					"<div class='span2 control-group'>"
 							);
@@ -139,9 +139,9 @@
 
 				out.println(
 						"  <li>"+
-						"    <input type='checkbox' class='input-xlarge cf-chk-dokidoki' id='image"+i+"' name='image"+i+"' value='"+n1.names.get(i)+"' >"+
+						"    <input type='checkbox' class='input-xlarge cf-chk-dokidoki' id='image"+i+"' name='image"+i+"' value='"+b.names.get(i)+"' >"+
 						"    <a onclick=\"onImageClick('image"+i+"');\" class='thumbnail'>"+
-						"       <img src='./img/parts/"+n1.names.get(i)+"' alt='' width='50px'>"+
+						"       <img src='"+b.urls.get(i)+"' alt='' width='50px'>"+
 						"    </a>"+
 						"  </li>"
 						);

@@ -2,8 +2,6 @@ package jp.dmtc.ing.promoa;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import jp.crudefox.server.util.CFServletParams;
 import jp.crudefox.server.util.TextUtil;
-import jp.dmtc.ing.promoa.beans.Next2Bean;
+import jp.dmtc.ing.promoa.beans.MBean;
+import jp.dmtc.ing.promoa.data.MData;
+import facebook4j.Facebook;
 
 /**
  * Servlet implementation class Create
@@ -56,44 +56,57 @@ public class Next2 extends HttpServlet {
 
 			HttpSession ses = request.getSession();
 			if( ses.isNew() ){
-				response.sendError( HttpServletResponse.SC_BAD_REQUEST , "セッションが以上です。");
+				response.sendError( HttpServletResponse.SC_BAD_REQUEST , "セッションが異常です。");
 				return ;
 			}
 
+			Facebook fb = (Facebook) ses.getAttribute(CFConst.SESATT_FACEBOOK);
+			MData md = (MData) ses.getAttribute(CFConst.SESATT_MOSAIC_DATA);
+
+
 			CFServletParams params = new CFServletParams(this, request, response, new File("/upfiles"));
 
-			//データ初期化
-			for(String name : Collections.list(ses.getAttributeNames()) ){
-				if( name.startsWith("image") ){
-					ses.removeAttribute(name);
-				}
-			}
+//			//データ初期化
+//			for(String name : Collections.list(ses.getAttributeNames()) ){
+//				if( name.startsWith("image") ){
+//					ses.removeAttribute(name);
+//				}
+//			}
+			md.select_images_id.clear();
 
-			java.util.List<String> image_names = new ArrayList<String>();
+			//java.util.List<String> image_names = new ArrayList<String>();
 			for(String name : params.getNames()){
 				System.out.println("gg:"+name);
 				if( name.startsWith("image") ){
 					String on = params.getStringParam(name);
 					if(TextUtil.isEmpty(on)) continue;
-					image_names.add(on);
+					if(!md.image_urls.containsKey(on)) continue;
+					//image_names.add(on);
+					md.select_images_id.add(on);
 				}
 			}
 
-			for(int i=0;i<image_names.size();i++){
-				ses.setAttribute("image"+i, image_names.get(i));
+//			for(int i=0;i<image_names.size();i++){
+//				ses.setAttribute("image"+i, image_names.get(i));
+//			}
+
+			MBean b = new MBean();
+
+			for(String e : md.select_images_id){
+				b.names.add(e);
+				b.urls.add(md.image_urls.get(e));
 			}
+			b.src_image = "./img/prof/" + md.src_iamge_name;
 
-			Next2Bean b = new Next2Bean();
-
-			for(String name : Collections.list( ses.getAttributeNames()) ){
-				if(!name.startsWith("image")) continue ;
-				b.names.add((String)ses.getAttribute(name));
-				System.out.println("jj:"+name+":"+ses.getAttribute(name));
-			}
-			b.src_image = (String) ses.getAttribute("src_image");
+//			for(String name : Collections.list( ses.getAttributeNames()) ){
+//				if(!name.startsWith("image")) continue ;
+//				b.names.add((String)ses.getAttribute(name));
+//				System.out.println("jj:"+name+":"+ses.getAttribute(name));
+//			}
+//			b.src_image = md.src_iamge_url;
 
 
-			ses.setAttribute("n2", b);
+			ses.setAttribute("b", b);
 		    //ViewであるJSPを呼び出す
 		    RequestDispatcher rDispatcher =
 		     request.getRequestDispatcher("/next2.jsp");

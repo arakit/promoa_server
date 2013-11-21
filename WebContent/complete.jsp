@@ -2,7 +2,7 @@
 <%-- (1)JavaBeansをインポートします。 --%>
 <%@ page import="java.beans.Beans.*" %>
 <%-- (2)<jsp:useBean>タグでJavaBeansのオブジェクトを生成します。 --%>
-<jsp:useBean id="cb" class="jp.dmtc.ing.promo.beans.CompleteBean" scope="session" />
+<jsp:useBean id="b" class="jp.dmtc.ing.promoa.beans.MBean" scope="session" />
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -123,7 +123,7 @@
 
 
 		<%
-			out.println("<img src='"+"./img/complete/"+cb.complete_image_name+"' width='500px'>");
+			out.println("<img src='"+""+b.complete_image_url+"' width='500px'>");
 		%>
 
 	    <hr>

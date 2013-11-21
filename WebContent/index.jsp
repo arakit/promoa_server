@@ -84,9 +84,9 @@
   <body>
 
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
     <!--<script src="../assets/js/jquery.js"></script>-->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="bootstrap/js/bootstrap.min.js"></script>-->
 
 
     <div class="container">
@@ -108,6 +108,36 @@
         <p class="lead">モザイクアート作成サービス</p>
         <!-- <a class="btn btn-large btn-success" href="./test_all.html">GOi??</a> -->
       </div>
+
+
+
+	<div class="row">
+	  <div class="span1"></div>
+	  <div class="span10 columns">
+		  <div id="myCarousel" class="carousel slide" >
+		    <!-- Carousel items -->
+		    <div class="carousel-inner">
+		      <!-- item1 -->
+		      <div class="active item">
+		        <img src="./img/carousel_test_1.jpg" alt="" width="870" height="500">
+		      </div>
+		      <!-- item2 -->
+		      <div class="item">
+		        <img src="./img/carousel_test_2.jpg" alt="" width="870" height="500">
+		      </div>
+		      <!-- item3 -->
+		      <div class="item">
+		        <img src="./img/carousel_test_3.jpg" alt="" width="870" height="500">
+		      </div>
+		    </div>
+		    <!-- Carousel nav -->
+		    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	      </div>
+      </div>
+      <div class="span1"></div>
+    </div>
+
 
       <hr>
 
@@ -149,24 +179,18 @@
 			<input type="file" id="src_image" name="src_image"  style="display: none;"><br>
 			<div class="input-prepend">
 		  		<a class="btn" onclick="$('#src_image').click();"><i class="icon-folder-open"></i></a>
-		  		<span id="src_image_cover" name="src_image_cover" class="input-xlarge uneditable-input">画像選択</span>
+		  		<span id="src_image_cover"  name="src_image_cover"  class="input-xlarge uneditable-input">画像選択</span>
 			</div>
 		</fieldset>
 
 		<script type="text/javascript">
-		  $('#src_image').change(function() {
-		      $('#src_image_cover').html($(this).val());
-		  });
+
+
+
 		</script>
 
 	    <br />
 	    <br />
-
-
-
-
-
-
 
       <!-- Example row of columns -->
 
@@ -178,7 +202,18 @@
       </fieldset>
     </form>
 
-
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />	    <br />
+    <br />
+    <br />
+    <br />	    <br />
+    <br />
+    <br />
+    <br />
 
       <hr>
 
@@ -207,7 +242,38 @@
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
     -->
+    
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="common/js/prettify.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-scrollspy.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-popover.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-button.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-collapse.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-carousel.js"></script>
+    <script type="text/javascript" src="common/js/bootstrap-typeahead.js"></script>
+    <script type="text/javascript" src="common/js/application.js"></script>
+    
+    
+    
 
+	<script type="text/javascript">
+
+	  $('.myCarousel').carousel({
+	    interval: 2000
+	  });
+
+	  $('#src_image').change(function() {
+	      $('#src_image_cover').html($(this).val());
+	  });	  
+	  
+	</script>
 
 
   </body>

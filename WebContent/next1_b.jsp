@@ -2,7 +2,7 @@
 <%-- (1)JavaBeansをインポートします。 --%>
 <%@ page import="java.beans.Beans.*" %>
 <%-- (2)<jsp:useBean>タグでJavaBeansのオブジェクトを生成します。 --%>
-<jsp:useBean id="b" class="jp.dmtc.ing.promoa.beans.MBean" scope="session" />
+<jsp:useBean id="n1" class="jp.dmtc.ing.promoa.beans.Next1Bean" scope="session" />
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -14,8 +14,6 @@
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="crudefox/css/crudefox.css" rel="stylesheet">
-
     <style type="text/css">
       body {
         padding-top: 20px;
@@ -52,8 +50,14 @@
       .marketing p + h4 {
         margin-top: 28px;
       }
+
+      .red-text {
+        color: red;
+      }
+
     </style>
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="crudefox/css/crudefox.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -99,8 +103,9 @@
         <!-- <a class="btn btn-large btn-success" href="./test_all.html">GOi??</a>
     </div>-->
 
+      <hr>
 
-      <form class="form-horizontal text-center" method="post" action="create"  enctype="multipart/form-data" >
+      <form class="form-horizontal text-center" method="post" action="next2"  enctype="multipart/form-data" >
 
       <!--
         <fieldset>
@@ -112,33 +117,31 @@
 		      </div>
 	      </div>
 	    </fieldset>
-	    -->
+	  -->
 
+	  <h1><span class="red-text">直感</span>で好きなものを選んでください</h1>
 
-		<%
-			out.println("<img src='"+b.src_image+"' width='250px'>");
-		%>
-
-	    <hr>
+	  <hr>
 
 
       <!-- Example row of columns -->
       <div class="row text-center">
-      	<ul class='thumbnails'>
+		<ul class='thumbnails'>
 
         <%
-			for (int i = 0; i < b.names.size(); i++) {
+			for (int i = 0; i < n1.names.size(); i++) {
 				out.println(
 					"<div class='span2 control-group'>"
-					//"    <input type='checkbox' class='input-xlarge' id='image"+i+"' name='image"+i+"' >"
 							);
 				out.println(
 					"<div class='control'>"
 				);
+
 				out.println(
 						"  <li>"+
+						"    <input type='checkbox' class='input-xlarge cf-chk-dokidoki' id='image"+i+"' name='image"+i+"' value='"+n1.names.get(i)+"' >"+
 						"    <a onclick=\"onImageClick('image"+i+"');\" class='thumbnail'>"+
-						"       <img src='"+b.urls.get(i)+"' alt='' width='50px' >"+
+						"       <img src='./img/parts/"+n1.names.get(i)+"' alt='' width='50px'>"+
 						"    </a>"+
 						"  </li>"
 						);
@@ -147,17 +150,9 @@
 				out.println(
 					"</div>"
 						);
-//				out.println(
-//						"<div class='span3'>"+
-//						"<h2>サッカー</h2>"+
-//						"<p></p>"+
-//						"<p><a class='btn' href='#''>サッカー &raquo;</a></p>"
-//						+"</div>"
-//					);
 
 			}
       	%>
-
       	</ul>
 
       </div>
@@ -165,15 +160,13 @@
 
 
 
+
       <hr>
-      
-      <h3 class="text-center">コレで作成してよろしいですか？</h3>
-      
 
       <!-- enctype="multipart/form-data" -->
       <fieldset>
-        <a class="btn btn-large btn" href='./'>BACK</a>      
-        <button type="submit" class="btn btn-large btn-danger">MAKE</button>
+        <a class="btn btn-large btn" href='./'>戻る</a>
+        <button type="submit" class="btn btn-large btn-warning">次へ</button>
         <!-- <button type="reset" class="btn">a?-a?￡a?3a?≫a?≪</button>-->
       </fieldset>
     </form>

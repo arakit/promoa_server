@@ -5,8 +5,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
@@ -17,8 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jp.dmtc.ing.promoa.beans.CompleteBean;
+import jp.dmtc.ing.promoa.beans.MBean;
+import jp.dmtc.ing.promoa.data.MData;
 import jp.dmtc.ing.promoa.mosaic.prot;
+import facebook4j.Facebook;
 
 /**
  * Servlet implementation class Create
@@ -63,19 +65,27 @@ public class Create extends HttpServlet {
 				return ;
 			}
 
+			Facebook fb = (Facebook) ses.getAttribute(CFConst.SESATT_FACEBOOK);
+			MData md = (MData) ses.getAttribute(CFConst.SESATT_MOSAIC_DATA);
+
 			System.out.println("合成を開始します。");
 
-			File src_image = new File(getServletContext().getRealPath("./img/prof/"+ses.getAttribute("src_image")));
+			File src_image = new File(getServletContext().getRealPath("./img/prof/"+md.src_iamge_name));
 			BufferedImage img = ImageIO.read(src_image);
 
 			//CFServletParams params = new CFServletParams(this, request, response, new File("/upfiles"));
 
-			ArrayList<File> files = new ArrayList<File>();
-			for(String name : Collections.list(ses.getAttributeNames()) ){
-				if( !name.startsWith("image") ) continue;
-				files.add( new File( getServletContext().getRealPath("./img/parts/"+(String)ses.getAttribute(name)) )  );
+//			ArrayList<File> files = new ArrayList<File>();
+//			for(String name : Collections.list(ses.getAttributeNames()) ){
+//				if( !name.startsWith("image") ) continue;
+//				files.add( new File( getServletContext().getRealPath("./img/parts/"+(String)ses.getAttribute(name)) )  );
+//			}
+
+			ArrayList<URL> files = new ArrayList<URL>();
+			for(String e : md.select_images_id){
+				URL url = new URL( md.image_urls.get(e) );
+				files.add(url);
 			}
-			
 			
 
 			//File parts_dir = new File( getServletContext().getRealPath("./img/parts/") );
@@ -101,6 +111,8 @@ public class Create extends HttpServlet {
 				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "サーバー無い保存失敗");
 				return ;
 			}
+			
+			md.complete_iamge_name = save_file.getName();
 
 //			response.sendRedirect("./img/complete/"+save_file.getName());
 
@@ -110,10 +122,10 @@ public class Create extends HttpServlet {
 //
 //			}
 
-			CompleteBean b = new CompleteBean();
-			b.complete_image_name = save_file.getName();
+			MBean b = new MBean();
+			b.complete_image_url = "./img/complete/" + md.complete_iamge_name;
 
-			ses.setAttribute("cb", b);
+			ses.setAttribute("b", b);
 		    //ViewであるJSPを呼び出す
 		    RequestDispatcher rDispatcher =
 		     request.getRequestDispatcher("/complete.jsp");
