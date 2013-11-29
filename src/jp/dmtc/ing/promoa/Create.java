@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import jp.dmtc.ing.promoa.beans.MBean;
 import jp.dmtc.ing.promoa.data.MData;
-import jp.dmtc.ing.promoa.mosaic.prot;
+import jp.dmtc.ing.promoa.mosaic.prot2;
 import facebook4j.Facebook;
 
 /**
@@ -94,13 +94,12 @@ public class Create extends HttpServlet {
 				tile[i] =  ImageIO.read(files.get(i));
 			}
 
-
 			Graphics2D g2 = (Graphics2D) img.getGraphics();
 
 			g2.setColor(Color.RED);
 			g2.drawRect(0, 0, img.getWidth(), img.getHeight());
 
-			prot prot = new prot();
+			prot2 prot = new prot2();
 			prot.paint(img.getGraphics(), src_image, tile);
 
 			//OutputStream os = response.getOutputStream();
@@ -108,7 +107,7 @@ public class Create extends HttpServlet {
 			boolean suc_save = ImageIO.write(img, "png", save_file);
 
 			if(!suc_save){
-				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "サーバー無い保存失敗");
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "サーバー内保存失敗");
 				return ;
 			}
 			

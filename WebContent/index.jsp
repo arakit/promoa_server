@@ -200,6 +200,9 @@
         <button type="submit" class="btn btn-large btn-warning">NEXT</button>
         <!-- <button type="reset" class="btn">a?-a?￡a?3a?≫a?≪</button>-->
       </fieldset>
+      
+      <a href="./fb/signin" class="btn btn-large btn-warning">Facebookで NEXT</a>
+
     </form>
 
     <br />
@@ -242,7 +245,7 @@
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
     -->
-    
+
     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="common/js/prettify.js"></script>
@@ -259,9 +262,9 @@
     <script type="text/javascript" src="common/js/bootstrap-carousel.js"></script>
     <script type="text/javascript" src="common/js/bootstrap-typeahead.js"></script>
     <script type="text/javascript" src="common/js/application.js"></script>
-    
-    
-    
+
+
+
 
 	<script type="text/javascript">
 
@@ -271,8 +274,8 @@
 
 	  $('#src_image').change(function() {
 	      $('#src_image_cover').html($(this).val());
-	  });	  
-	  
+	  });
+
 	</script>
 
 

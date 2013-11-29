@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.dmtc.ing.promoa.CFConst;
 import facebook4j.Facebook;
 import facebook4j.FacebookFactory;
 
@@ -18,11 +19,23 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Facebook facebook = new FacebookFactory().getInstance();
-        request.getSession().setAttribute("facebook", facebook);
+//        Facebook facebook = new FacebookFactory().getInstance();
+//        request.getSession().setAttribute("facebook", facebook);
+//        StringBuffer callbackURL = request.getRequestURL();
+//        int index = callbackURL.lastIndexOf("/");
+//        callbackURL.replace(index, callbackURL.length(), "").append("/callback");
+//        response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackURL.toString()));
+
+    	Facebook fb;
+    	fb = new FacebookFactory().getInstance();
+        request.getSession().setAttribute(CFConst.SESATT_FACEBOOK, fb);
+
+    	System.out.println("attempt get access token callback.");
         StringBuffer callbackURL = request.getRequestURL();
         int index = callbackURL.lastIndexOf("/");
         callbackURL.replace(index, callbackURL.length(), "").append("/callback");
-        response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackURL.toString()));
+        System.out.println("redirect="+callbackURL.toString());
+        response.sendRedirect(fb.getOAuthAuthorizationURL(callbackURL.toString()));
+
     }
 }

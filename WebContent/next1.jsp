@@ -139,9 +139,9 @@
 
 				out.println(
 						"  <li>"+
-						"    <input type='checkbox' class='input-xlarge cf-chk-dokidoki' id='image"+i+"' name='image"+i+"' value='"+b.names.get(i)+"' >"+
+						"    <input type='checkbox' class='input-xlarge cf-chk-dokidoki' id='image"+i+"' name='image"+i+"' value='"+b.names.get(i)+"' checked >"+
 						"    <a onclick=\"onImageClick('image"+i+"');\" class='thumbnail'>"+
-						"       <img src='"+b.urls.get(i)+"' alt='' width='50px'>"+
+						"       <img src='"+b.urls.get(i)+"' alt=''>"+
 						"    </a>"+
 						"  </li>"
 						);

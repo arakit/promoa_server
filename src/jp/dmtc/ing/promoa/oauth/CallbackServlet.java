@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jp.dmtc.ing.promoa.CFConst;
 import facebook4j.Facebook;
+import facebook4j.FacebookException;
+import facebook4j.auth.AccessToken;
 
 @WebServlet(name = "callback", urlPatterns = { "/fb/callback" })
 public class CallbackServlet extends HttpServlet {
@@ -16,15 +19,18 @@ public class CallbackServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
+        Facebook fb = (Facebook) request.getSession().getAttribute(CFConst.SESATT_FACEBOOK);
         String oauthCode = request.getParameter("code");
         System.out.println("code="+oauthCode);
-//        try {
-//            facebook.getOAuthAccessToken(oauthCode);
-//        } catch (FacebookException e) {
-//            throw new ServletException(e);
-//        }
-        System.out.println("ridirect="+request.getContextPath() + "/");
-        response.sendRedirect(request.getContextPath() + "/");
+        try {
+            AccessToken at = fb.getOAuthAccessToken(oauthCode);
+            fb.setOAuthAccessToken(at);
+            request.getSession().setAttribute(CFConst.SESATT_ACCESS_TOKEN, at);
+        } catch (FacebookException e) {
+            throw new ServletException(e);
+        }
+        String ridirec_url = request.getContextPath() + "/";
+        System.out.println("ridirect="+ridirec_url);
+        response.sendRedirect(ridirec_url);
     }
 }
