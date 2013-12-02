@@ -152,11 +152,11 @@ public class Next1 extends HttpServlet {
 //			}
 
 		System.out.println("----");
-		
-		
 
-		
-		
+
+
+
+
 
 		ResponseList<Friend> friends = fb.getFriends(new Reading().fields("picture","cover"));
 
@@ -182,16 +182,16 @@ public class Next1 extends HttpServlet {
 //				b.names.add(file.getName());
 //				System.out.println("name:"+file.getName());
 //			}
-		
-		
-		
+
+
+
 		ResponseList<Album> albums = fb.getAlbums(new Reading().fields("photos","cover_photo"));
 		for(int i=0;i<albums.size();i++){
 			Album album = albums.get(i);
 			//fb.getAlbumPhotos(arg0);
-			
+
 			ResponseList<Photo> ps = fb.getAlbumPhotos(album.getId(), new Reading().fields("photos","picture","images"));
-			
+
 			for(Photo p : ps){
 				List<Photo.Image> imgs =  p.getImages();
 				Photo.Image kimg = null;
@@ -208,8 +208,8 @@ public class Next1 extends HttpServlet {
 			}
 
 		}
-		
-		
+
+
 		for(Friend f : friends){
 			Picture pic = f.getPicture();
 			if(pic==null || pic.isSilhouette()) continue;

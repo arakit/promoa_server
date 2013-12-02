@@ -2,7 +2,7 @@
 <%-- (1)JavaBeansをインポートします。 --%>
 <%@ page import="java.beans.Beans.*" %>
 <%-- (2)<jsp:useBean>タグでJavaBeansのオブジェクトを生成します。 --%>
-
+<jsp:useBean id="b" class="jp.dmtc.ing.promoa.beans.MBean" scope="session" />
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -141,7 +141,7 @@
 
       <hr>
 
-      <form class="form-horizontal text-center" method="post" action="next1"  enctype="multipart/form-data" >
+      <form class="form-horizontal text-center" method="post" action="next_ex_1"  enctype="multipart/form-data" >
 
       <h3>人とは違う<span class='red-text'>ユニーク</span>なプロフィール画像<br />作ってみませんか？</h3>
 
@@ -200,8 +200,19 @@
         <button type="submit" class="btn btn-large btn-warning">NEXT</button>
         <!-- <button type="reset" class="btn">a?-a?￡a?3a?≫a?≪</button>-->
       </fieldset>
-      
-      <a href="./fb/signin" class="btn btn-large btn-warning">Facebookで NEXT</a>
+
+      <br>
+
+      <%
+      if(b.login_fb){
+    	  out.println("ログインしています。<br />");
+      }else{
+    	  out.println("ログインしてください。<br />");
+      }
+      %>
+
+      <a href="./fb/signin" class="btn btn-large btn-warning">Facebookログイン</a>
+
 
     </form>
 

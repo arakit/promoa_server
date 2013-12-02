@@ -5,24 +5,21 @@ package jp.dmtc.ing.promoa.mosaic;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 
-public class prot extends JFrame{
-  public static void main(String[] args){
-	  prot test = new prot();
-    test.addWindowListener(new WindowAdapter(){
-      public void windowClosing(WindowEvent e){System.exit(0);}
-    });
-
-    test.setBounds( 0, 0, 800, 600);
-    test.setVisible(true);
-  }
+public class prot{
+//  public static void main(String[] args){
+//	  prot test = new prot();
+//    test.addWindowListener(new WindowAdapter(){
+//      public void windowClosing(WindowEvent e){System.exit(0);}
+//    });
+//
+//    test.setBounds( 0, 0, 800, 600);
+//    test.setVisible(true);
+//  }
 
   int mNum = 0;
   int noudo = 0;		//出力濃度　０～３０が理想
@@ -92,7 +89,7 @@ public class prot extends JFrame{
 						tileimg.setRGB(l, k, toPaint(rave,gave,bave,toGray(col),tilelevelmax[compare(tilelevel,ave)]));
 					}
 				}
-			    g2.drawImage(tileimg, j, i, this);			//画像タイルはめ込み！
+			    g2.drawImage(tileimg, j, i, null);			//画像タイルはめ込み！
 //				for (int k = 0; k < iconsize; k++) {
 //					for (int l = 0; l < iconsize; l++) {
 //						if(i+k>=img.getHeight()) break;			//あまり強制break

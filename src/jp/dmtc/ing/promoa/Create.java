@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import jp.dmtc.ing.promoa.beans.MBean;
 import jp.dmtc.ing.promoa.data.MData;
-import jp.dmtc.ing.promoa.mosaic.prot2;
+import jp.dmtc.ing.promoa.mosaic.Mosaicing;
 import facebook4j.Facebook;
 
 /**
@@ -86,7 +86,8 @@ public class Create extends HttpServlet {
 				URL url = new URL( md.image_urls.get(e) );
 				files.add(url);
 			}
-			
+
+
 
 			//File parts_dir = new File( getServletContext().getRealPath("./img/parts/") );
 			BufferedImage[] tile = new BufferedImage[files.size()];
@@ -99,8 +100,14 @@ public class Create extends HttpServlet {
 			g2.setColor(Color.RED);
 			g2.drawRect(0, 0, img.getWidth(), img.getHeight());
 
-			prot2 prot = new prot2();
-			prot.paint(img.getGraphics(), src_image, tile);
+
+			Mosaicing mos = new Mosaicing();
+			mos.draw3(g2, img, tile, Math.min(Math.max(img.getWidth()/20,50),100) );
+
+//			prot2 prot = new prot2();
+//			prot.paint(img.getGraphics(), src_image, tile);
+
+
 
 			//OutputStream os = response.getOutputStream();
 			File save_file = new File(getServletContext().getRealPath("./img/complete/"+System.currentTimeMillis()));
@@ -110,7 +117,7 @@ public class Create extends HttpServlet {
 				response.sendError(HttpServletResponse.SC_BAD_REQUEST, "サーバー内保存失敗");
 				return ;
 			}
-			
+
 			md.complete_iamge_name = save_file.getName();
 
 //			response.sendRedirect("./img/complete/"+save_file.getName());
@@ -132,6 +139,12 @@ public class Create extends HttpServlet {
 
 		}catch(Exception e){
 			e.printStackTrace();
+			try {
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST, ""+e);
+			} catch (IOException e1) {
+				// TODO 自動生成された catch ブロック
+				e1.printStackTrace();
+			}
 		}
 
 	}

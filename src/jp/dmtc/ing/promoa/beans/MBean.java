@@ -15,4 +15,7 @@ public class MBean {
 
 	public String complete_image_url;
 
+
+	public boolean login_fb = false;
+
 }
